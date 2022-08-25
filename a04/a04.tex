@@ -1,0 +1,35 @@
+\documentclass[12pt, a4paper, oneside, ngerman]{article}
+
+\input{../epackages.tex}
+
+\newcommand{\hpcSheetNumber}{4}
+\newcommand{\hpcDeadline}{June 9, 2021 at 11:55pm}
+
+%%% define class and exam details in header file!
+
+%\hpcSolutiontrue
+
+\begin{document}
+
+\input{../header.tex}
+
+
+\ex{Shader abstraction}{15}
+
+Reuse your submission for assignment 3 as your codebase for this assignment.
+In the previous assignments a lot of repetitive code had to be written for creating different shader programs. This can be tedious if there are a lot of programs to handle and its a good idea to abstract this into a class.
+\\
+\\
+In this assignment your task is to create a class named \texttt{GLProgram} which abstracts the complete process from creating a vertex and fragment shader from files to linking them into a program. The class should also include calls for using a program, retrieving attribute and uniform locations and setting shader uniforms. For further details look at the class diagram below \ref{fig:class_diagram}. Make sure to implement all the public methods. You can reuse the code inside the \texttt{GLHelper} class for compiling and creating the shaders from files.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{program_class_diagram.png}
+  \caption{UML diagram of the \texttt{GLProgram} class.}
+  \label{fig:class_diagram}
+\end{figure}
+
+Also rewrite your \texttt{main.cpp} file by replacing shader and program calls with functionality of the newly created \texttt{GLProgram} class. Make sure that your program compiles and that the rendering of the program still matches the result of Assignment03.
+
+\end{document}

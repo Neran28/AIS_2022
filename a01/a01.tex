@@ -1,0 +1,93 @@
+\documentclass[12pt, a4paper, oneside, ngerman]{article}
+
+\input{../epackages.tex}
+
+\newcommand{\hpcSheetNumber}{1}
+\newcommand{\hpcDeadline}{April 28, 2021 at 11:55pm}
+
+%%% define class and exam details in header file!
+
+%\hpcSolutiontrue
+
+\begin{document}
+
+\input{../header.tex}
+
+\newacronym{vbo}{VBO}{vertex buffer object}
+\newacronym{vao}{VAO}{vertex array object}
+\newacronym{glsl}{GLSL}{OpenGL shading language}
+
+\section{How to get started}
+
+Assignments consist of theoretical and programming tasks. The programming tasks require a C++ environment.\\
+
+In order to get you started for the assignments, please follow these steps to setup your programming environment. \\
+\\
+\textbf{For Windows users:}
+
+\begin{enumerate}
+\item You should download the latest \href{https://visualstudio.microsoft.com}{Visual Studio IDE} (NOT Visual Studio Code). This can be downloaded for free from Microsoft. The Community Edition is sufficient for our needs.
+
+\item Run the installer and check 'Desktop development with C++' in the 'Desktop \& Mobile' section of the 'Workloads' tab. Proceed with the installation.
+
+\item Download the provided source code archive corresponding to the assignment sheet from Moodle, decompress it and use the .sln file to open the solution with Visual Studio.\\
+
+\end{enumerate}
+\textbf{For Mac users:}\\
+
+You should install Xcode. It can be downloaded from the app store for free. Also install \href{http://glew.sourceforge.net/}{glew} and \href{https://www.glfw.org/}{glfw}.\\
+\\
+\textbf{For Linux users:}\\
+
+You should already have all necessary tools installed on your system. In the rare situation that you installed only a minimal distribution and it lacks the build essentials you can install the necessary tools by running \texttt{sudo apt install build-essential}
+
+
+\section{How to submit your solution}
+\label{sec:rules}
+For a successful submission all you need to do is to create a \href{http://en.wikipedia.org/wiki/Zip_(file_format)}{zip-archive} of the files containing your answers to the theoretical tasks and the project folder of the programming solution. Submit this archive following the naming convention shown in the header of every assignment sheet. Make sure that your code compiles otherwise you won't receive credit for the programming task.
+
+\textbf{Do not change any helper classes in the provided \texttt{Utils} folder!}
+
+\ex{Hello OpenGL}{20}
+
+This and the following assignments make use of OpenGL for rendering a given scene. All OpenGL exercises need to be written against the \textbf{OpenGL 3.2 core profile or greater}. OpenGL 3 is the basis for \textit{modern} OpenGL programming where all fixed function pipeline and immediate mode OpenGL commands are deprecated.
+
+Consult the reading list at the end of this document for further information about OpenGL. The OpenGL \enquote{\textit{Red Book}} \cite{RedBook} is the recommended way to learn \textit{modern} OpenGL and \cite{RTR3} is a very good compendium about rasterization-based Computer Graphics including chapters introducing the programmable graphics pipeline and math prerequisites. \cite{OglMan} and \cite{OglDoc} are the sources for details about specific OpenGL and \gls{glsl} calls. The \href{http://www.khronos.org/files/opengl-quick-reference-card.pdf}{quick reference cards} found at \cite{OglDoc} for all OpenGL and \gls{glsl} commands starting with OpenGL version 3.2 also give a good overview for experienced OpenGL programmers. 
+
+The \href{http://www.realtech-vr.com/glview}{OpenGL Extensions Viewer} is a handy tool to quickly check the OpenGL capabilities of your machine to verify that your hardware and installed driver support at least version 3.2 or greater.\\
+
+The provided example program \texttt{Hello OpenGL} renders a simple white triangle as shown on the left in Figure~\ref{fig:triangles}. Extend this program so that its output matches \textbf{exactly} the rendering on the right in the same figure that shows two triangles forming a rectangle on a dark cyan background. \\
+
+To complete this task first familiarize yourself with the concept of shaders, \glspl{vbo}, and \glspl{vao}. Change the provided data stored in \texttt{triangle} such that it forms one of the two triangles. Add additional data for the second triangle. To color one of the triangles in a different color than the other one create an additional shader program that uses a different fragment shader code but still the provided vertex shader code.
+
+The normalized color values of the two triangles and background are as follows:
+\begin{align*}
+    orange(0.9, 0.5, 0.2) \quad
+    green(0.2, 0.9, 0.2) \quad
+    background(0.1, 0.15, 0.15)
+\end{align*}
+
+Get used to calling \texttt{glGetError} after every OpenGL command to quickly identify bad commands with wrong arguments because an OpenGL application's behavior is undefined when it is not conformant to the OpenGL specification. This can lead to inconsistent program behavior that could be observed quite differently across different vendors and platforms. 
+
+
+
+To achieve this first change the data
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4875\linewidth]{SimpleTriangle.png}
+  \includegraphics[width=0.4875\linewidth]{rectangle.png}
+  \caption{Rendering of a simple white triangle (left) and the solution to this task (right).}
+  \label{fig:triangles}
+\end{figure}
+
+% Publications from BibTeX file
+\renewcommand{\refname}{Reading list and references}
+\nocite{*}
+\bibliographystyle{plain}
+%\bibliographystyle{natdin}
+%\bibliographystyle{dinat}
+%\bibliographystyle{gerplain}
+\bibliography{literature}
+
+\end{document}

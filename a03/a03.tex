@@ -1,0 +1,70 @@
+\documentclass[12pt, a4paper, oneside, ngerman]{article}
+
+\input{../epackages.tex}
+
+\newcommand{\hpcSheetNumber}{3}
+\newcommand{\hpcDeadline}{May 26, 2021 at 11:55pm}
+
+%%% define class and exam details in header file!
+
+%\hpcSolutiontrue
+
+\begin{document}
+
+\input{../header.tex}
+
+
+\ex{Hello third dimension}{5}
+
+Familiarize yourself with the third dimension and the provided source code.
+While running the program you can interactively rotate the view by dragging with the left mouse button and pan the view by dragging with the right mouse button. Pressing the \texttt{CTRL} key while dragging allows you to control the other degrees of freedom.\\
+The rendered image itself should look colorful and a little bit broken. It might look for instance as shown in Figure~\ref{fig:debug}. It could also look slightly different. It visualizes the geometry's normals.
+Pressing the keys: \texttt{F}, \texttt{G} or \texttt{P} changes the overall color.\\
+
+\textbf{Do not change the initial viewing angle of the scene for your submission!}\\
+
+It is your task to render the geometry with correct occlusion.\\
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.325\linewidth]{DebugShadingFlat.png}
+  \includegraphics[width=0.325\linewidth]{DebugShadingGouraud.png}
+  \includegraphics[width=0.325\linewidth]{DebugShadingPhong.png}
+  \caption{The \href{http://en.wikipedia.org/wiki/Utah_teapot}{Utah teapot} on a plane with visualized normals and tinted with the primary \texttt{RGB} colors.}
+  \label{fig:debug}
+\end{figure}
+
+
+
+
+\ex{Hello light source position}{10}
+
+Before we do the actual shading in Exercise~\ref{ex:shading}, we want to
+visualize the point light source's position by rendering a white cube with side length of 2.
+Its default position should be at (-35, 35, 35) and by pressing the space bar it should start rotating around point (0, 35, 0) at 45 degrees per second. Pressing the space bar again should pause/resume the rotation at its current position.
+Additionally, the character \enquote{\texttt{R}}-key should reset the animation and all user interactions to the first frame as displayed in Figure~\ref{fig:shading}. When the application starts the animation should be paused in the reset state.
+
+
+
+
+\ex{Hello shading}{20}
+\label{ex:shading}
+
+Implement \textit{Flat}, \textit{Gouraud} and \textit{Phong} shading with the \textit{Phong} illumination model as shown in Figure~\ref{fig:shading}. The keys: \texttt{F}, \texttt{G} and \texttt{P} switch to the corresponding technique and use the predefined diffuse colors.
+The point light source's cube should have a pure white emission color. No other objects emit light.
+The material's ambient color should be (0.05, 0.05, 0.05), its specular color (1, 1, 1) and the shininess value should be set to 50.
+The point light source's coefficients should be set to (0.9, 0.9, 0.9) for all three light components.
+
+For better comparison you can watch the animation sequences on Moodle.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.325\linewidth]{ShadingFlat.png}
+  \includegraphics[width=0.325\linewidth]{ShadingGouraud.png}
+  \includegraphics[width=0.325\linewidth]{ShadingPhong.png}
+  \caption{\textit{Flat} shading (left), \textit{Gouraud} shading (middle), and \textit{Phong} shading (right).}
+  \label{fig:shading}
+\end{figure}
+
+
+\end{document}

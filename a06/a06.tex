@@ -1,0 +1,61 @@
+
+\documentclass[12pt, a4paper, oneside, ngerman]{article}
+
+\input{../epackages.tex}
+
+\newcommand{\hpcSheetNumber}{6}
+\newcommand{\hpcDeadline}{July 7, 2021 at 11:55pm}
+
+%%% define class and exam details in header file!
+
+%\hpcSolutiontrue
+
+\begin{document}
+
+\input{../header.tex}
+
+
+
+
+\ex{Shadows}{30}
+
+Reuse your submission for assignment 5 as your codebase for this assignment.
+
+Add shadows to the scene implemented with shadow mapping.
+It is required that the teapot casts a shadow onto itself and onto the ground plane. The light source's default position should be changed to (-50, 60, 50) and by pressing the space bar it should start rotating around point (0, 60, 0) at 45 degrees per second as usual. It is sufficient using a directional shadow map. \\
+
+\textbf{As in the previous assignments: Do not change the initial viewing angle and light source position of the scene for your submission!}\\
+
+To implement shadow mapping split the rendering process into two passes. In the first pass the shadow map is rendered and in the second pass the previously rendered shadow map is used to apply shadows to the scene.
+
+A shadow map is a depth rendering of the scene from a light's view. For rendering the shadow map create a framebuffer object and configure it accordingly. Create a texture that stores depth values and attach it as a \texttt{GL\_DEPTH\_ATTACHMENT} to that framebuffer. Then render to that framebuffer all shadow casting objects. For the view matrix you can use the provided \texttt{Mat4::lookAt} function and as projection use a perspective projection. The attached texture will be used as depth buffer when rendering to that framebuffer and ultimately represents the shadow map.
+
+In the second rendering pass use the rendered shadow map to shade the fragments accordingly. In the phong vertex shader transform in addition the vertex position into light space. This can be achieved using a view to light matrix, see Figure~\ref{fig:view_to_light_matrix}. The resulting coordinates represent the vertex position seen from the light's view. In addition a bias is applied such that the coordinates can be used for sampling a texture. In the fragment shader you can use this coordinate to sample the shadow map. Make sure to apply perspective division before sampling the texture. To know whether a fragment is in shadow or lit by the light, the sampled value must be compared to the fragments depth. If a fragment is in shadow apply to the diffuse and specular color term a factor of 0 such that the fragment only gets contribution from the ambient term. This fragment shader part can also be done using built in OpenGL functionality. To use this functionality you need a different sampler2D for the shadow map named \texttt{sampler2DShadow} and further set additional texture parameter to the depth texture. \\
+
+
+You can compare your results with Figure~\ref{fig:textures}, \ref{fig:solution}, and the animation sequence available on \Moodle.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{view_to_light_matrix.png}
+  \caption{View2Light matrix which transforms vertices from view space into light space with an additional bias of 0.5.}
+  \label{fig:view_to_light_matrix}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4875\linewidth]{LightViewColor.png}
+  \includegraphics[width=0.4875\linewidth]{LightViewDepth.png}
+  \caption{Initial light view (left) and its depth values (right) used for shadow mapping.}
+  \label{fig:textures}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{Solution.png}
+  \caption{Shadow mapping applied to the teapot scene.}
+  \label{fig:solution}
+\end{figure}
+
+
+\end{document}

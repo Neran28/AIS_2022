@@ -1,0 +1,36 @@
+\documentclass[12pt, a4paper, oneside, ngerman]{article}
+
+\input{../epackages.tex}
+
+\newcommand{\hpcSheetNumber}{7}
+\newcommand{\hpcDeadline}{July 21, 2021 at 11:55pm}
+
+%%% define class and exam details in header file!
+
+%\hpcSolutiontrue
+
+\begin{document}
+
+\input{../header.tex}
+
+
+
+
+\ex{Sky}{30}
+
+Reuse your submission for assignment 6 as your codebase for this assignment.
+
+Add a visible sky dome to the scene. Use your favorite\footnote{Make sure that your map exhibits some structure or interesting surrounding and not just void or noise.} environment map for the sky. You can also use the provided environment map in \Moodle. The sky and the ground plane should be reflected on the teapot, making the teapot's color 50\% blue and 50\% of the reflected environment.
+\textbf{As in the previous assignments: Do not change the initial viewing angle and light source position of the scene for your submission!}
+You can compare your results with Figure~\ref{fig:sky} and with the animation sequence on \Moodle.
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.325\linewidth]{EnvironmentMapping_1.png}
+  \includegraphics[width=0.325\linewidth]{EnvironmentMapping_2.png}
+  \includegraphics[width=0.325\linewidth]{EnvironmentMapping_3.png}
+  \caption{The \href{http://en.wikipedia.org/wiki/Utah_teapot}{Utah teapot} with applied shadow, bump, and reflection mapping.}
+  \label{fig:sky}
+\end{figure}
+
+\end{document}

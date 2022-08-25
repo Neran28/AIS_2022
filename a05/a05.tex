@@ -1,0 +1,67 @@
+\documentclass[12pt, a4paper, oneside, ngerman]{article}
+
+\input{../epackages.tex}
+
+\newcommand{\hpcSheetNumber}{5}
+\newcommand{\hpcDeadline}{June 23, 2020 at 11:55pm}
+
+%%% define class and exam details in header file!
+
+%\hpcSolutiontrue
+
+\begin{document}
+
+\input{../header.tex}
+
+\ex{Diffuse details}{15}
+
+Reuse your submission for assignment 4 as your codebase for this assignment.
+Your implementation for this assignment should be exclusively based on \textit{Phong} shading.
+Submit your solution for the exercises on this sheet according to the submission guidelines.
+
+In order to increase detail in our teapot scene add texture mapping capabilities to your program. Use the textures displayed in Figure~\ref{fig:diffuseTextures} for the diffuse (\texttt{Stones\_Diffuse.png}) and specular (\texttt{Stones\_Specular.png}) illumination components of the ground plane. The textures should span the entire ground plane. Make sure to enable bilinear texture interpolation for mini- and magnification. For loading the texture files into your program you can use the provided \texttt{stb\_image.cpp} and \texttt{stb\_image.h} files. Also extend your \texttt{GLProgram} class for handling \texttt{sampler2D} uniforms. \\
+
+\textbf{As in the previous assignment: Do not change the initial viewing angle and light source position of the scene for your submission!}\\
+
+You may want to compare your results with Figure~\ref{fig:diffuseScene}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4875\linewidth]{Stones_Diffuse.png}
+  \includegraphics[width=0.4875\linewidth]{Stones_Specular.png}
+  \caption{Diffuse (left) and specular (right) textures for the ground plane. All textures can be downloaded on \Moodle.}
+  \label{fig:diffuseTextures}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{TeapotDiffuseDetails.png}
+  \caption{Diffuse and specular textures applied to the teapot scene.}
+  \label{fig:diffuseScene}
+\end{figure}
+
+
+
+\ex{Normal details}{15}
+
+Increase the small-scale detail level of your scene even further by implementing bump mapping. Use the normal maps shown in Figure~\ref{fig:normalTextures} to enhance the ground plane (\texttt{Stones\_Normals.png}) and the teapot (\texttt{HPC\_Normals.png}). Do not forget to enable the texture repeat mode for the teapot's texture. If implemented correctly the stones should appear to stick out of the ground plane's surface under steep viewing angles and appropriate lighting conditions and the HPC logo should engrave the blue teapot.
+
+For better comparison you can watch the animation sequences on \Moodle and compare your results with Figure~\ref{fig:normalScene}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.325\linewidth]{Stones_Normals.png}
+  \includegraphics[width=0.65\linewidth]{HPC_Normals.png}
+  \caption{Normal maps for the ground plane (left) and teapot (right). All textures can be downloaded on \Moodle.}
+  \label{fig:normalTextures}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{TeapotNormalDetails.png}
+  \caption{Diffuse, specular, and normal map textures applied to the teapot scene.}
+  \label{fig:normalScene}
+\end{figure}
+
+
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass[12pt, a4paper, oneside, ngerman]{article}
+
+\input{../epackages.tex}
+
+\newcommand{\hpcSheetNumber}{2}
+\newcommand{\hpcDeadline}{May 12, 2021 at 11:55pm}
+
+%%% define class and exam details in header file!
+
+%\hpcSolutiontrue
+
+\newacronym{vbo}{VBO}{vertex buffer object}
+\newacronym{vao}{VAO}{vertex array object}
+\newacronym{glsl}{GLSL}{OpenGL shading language}
+
+\begin{document}
+
+\input{../header.tex}
+
+\section{Hello Triangles}
+The provided code in this exercise already integrates some functionality from the previous assignment like GLFW and GLEW initialization in classes inside the \texttt{Utils} folder. In addition the folder contains classes for matrices and vectors which you will need for this and following assignments. It is not needed to edit any of the source code inside that folder instead it is sufficient to just edit classes inside the \texttt{Hello\_Triangles} folder. Folder \texttt{res} in \texttt{Hello\_Triangles} contains files for your shader sources and you can use the \texttt{GLHelper} files for compiling the shader sources.
+
+\ex{Colored triangles}{10}
+\label{ex:triangles}
+
+The provided example program \texttt{main.cpp} in folder \texttt{Hello\_Triangles} renders a simple white triangle as shown on the left in Figure~\ref{fig:triangles}. Extend this program so that its output matches \textbf{exactly} the rendering on the right in the same figure that shows three \textbf{equilateral} triangles with interpolated colors of pure red, magenta, yellow, blue, cyan, and green.
+
+Study the matrix and vector classes inside \texttt{Utils} to perform transformations which will be essential for the upcoming exercises.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4875\linewidth]{SimpleTriangle.png}
+  \includegraphics[width=0.4875\linewidth]{Triforce.png}
+  \caption{Rendering of a simple white triangle (left) and the \href{http://en.wikipedia.org/wiki/Triforce}{Triforce} rendered with smooth interpolated colors (right).}
+  \label{fig:triangles}
+\end{figure}
+
+
+
+
+\ex{Transformations \& animations}{10}
+\label{ex:animations}
+
+Extend and modify your solution to Exercise~\ref{ex:triangles} so that each of the three equilateral triangles shown on the right in Figure~\ref{fig:triangles} is rotating at 45 degrees per second around one of the major axes. The upper red-magenta-yellow triangle should rotate around the $x$-axis aligned at the half of the triangle's height. The lower right yellow-cyan-green triangle should rotate around the $y$-axis aligned at half of the triangle's width and the lower left magenta-blue-cyan triangle should rotate around the $z$-axis where the triangle's centroid should be the center of its rotation. You should still use an orthographic projection as in the previous exercise. For better comparison you can watch the clip of the animated triangles on Moodle.
+
+Finally, process user input in your program so that pressing the space bar toggles the animation to stop or to continue right at the position where it stopped. Additionally, the \enquote{\texttt{R}}-key should reset the animation to its first frame as displayed in Figure~\ref{fig:triangles} (right). \textbf{When the application starts the animation should be paused in the reset state.}
+
+
+\end{document}

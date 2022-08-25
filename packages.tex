@@ -1,0 +1,136 @@
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, left=25mm, right=20mm, top=2.35cm, bottom=2.35cm}
+
+\usepackage[T1]{fontenc}
+\usepackage{totcount}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage[usenames]{color}
+\usepackage{caption}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{courier}
+%\usepackage[nolist]{acronym}
+\usepackage[acronym]{glossaries} % do not use hyperref! that's why we include it before
+\usepackage[hyphens]{url}
+\usepackage[pdfborder={0 0 0}, colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{tabu}
+\usepackage{xspace}
+\usepackage{fix-cm}
+%\usepackage{pdflscape}
+\usepackage{lscape}
+\usepackage{enumitem}
+%\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage[detect-weight=true, detect-family=true]{siunitx}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\newcommand{\abs}[1]{ \left\lvert#1\right\rvert} % absolute value: single vertical bars
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % norm: double vertical bars
+
+\ifhpcGerman % GERMAN STUFF
+\usepackage[ngerman]{babel}
+\usepackage[babel, german=quotes]{csquotes}
+%\usepackage[babel, german=guillemets]{csquotes}
+\else
+%\usepackage[english=british]{csquotes}
+\usepackage[english=american]{csquotes}
+\fi
+
+\newif\ifhpcBonus % enables bonus points
+\hpcBonusfalse
+\newif\ifhpcFake % toggles preparatory (fake) and final exam (real)
+\hpcFakefalse
+\newif\ifhpcKnown % toggles known student name, matriculation no. etc.
+\hpcKnownfalse
+\newif\ifhpcSolution % toggles solution
+\hpcSolutionfalse
+
+\newcommand{\hpcGerman}[2]{\ifhpcGerman#1\else#2\fi}
+\newcommand{\hpcBonus}[2]{\ifhpcBonus#1\else#2\fi}
+\newcommand{\hpcFake}[2]{\ifhpcFake#1\else#2\fi}
+\newcommand{\hpcKnown}[2]{\ifhpcKnown#1\else#2\fi}
+
+% The solution commands take always two arguments. The solution text that should be displayed
+% when solution mode is enabled and the other text that should be displayed in the normal mode.
+% Use simple "\s{<solution text>}{<normal text>} for bold colored solutions.
+\newcommand{\s}[2]{\ifhpcSolution\textcolor[rgb]{0.8,0.0,0.8}{\textbf{#1}}\else#2\fi}
+%\newcommand{\s}[2]{\ifprintanswers\textcolor[rgb]{0.8,0.0,0.8}{\textbf{#1}}\else#2\fi} % exam solution stuff
+% Use "\solution{<solution text>}{<normal text>} for subtle solutions.
+\newcommand{\hpcSolution}[2]{\ifhpcSolution#1\else#2\fi}
+%\newcommand{\hpcSolution}[2]{\ifprintanswers#1\else#2\fi} % exam solution stuff
+
+\definecolor{dkgreen}{rgb}{0,0.4,0}
+\definecolor{dkred}{rgb}{0.5,0,0}
+\definecolor{lightgray}{rgb}{0.9,0.9,0.9}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinelanguage{out}{
+%sensitive=false,
+%alsoletter={.},
+%moredelim=[s][\color{red}]{<}{>},
+%moredelim=[s][\color{blue}]{[}{]},
+%moredelim=[is][\color{orange}]{:}{:},
+%keywords=[10]{...},
+%keywordstyle=[10]{\color{magenta}},
+}
+
+\lstnewenvironment{stdout}
+{\lstset{numbers=none, language=out, frame=none, backgroundcolor={\color{lightgray}}, basicstyle={\footnotesize\ttfamily}}}
+{}
+
+\lstset{
+  % the following allows us to handle UTF-8 encoding issues, listings does not support UTF-8 code
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ò}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ò}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1,
+  %extendedchars=true,
+  %backgroundcolor=\color{white},    % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  numbers=left,                      % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                     % how far the line-numbers are from the code
+  numberstyle=\scriptsize\ttfamily\color{mygray},   % the style that is used for the line-numbers
+  language=Java,                     % the language of the code
+  basicstyle=\scriptsize\ttfamily, % the size of the fonts that are used for the code
+  showspaces=false,                  % show spaces adding particular underscores
+  showstringspaces=false,            % underline spaces within strings
+  showtabs=false,                    % show tabs within strings adding particular underscores
+  showlines=true,                    % show empty lines at the end of the listing
+  %stepnumber=2,                     % the step between two line-numbers. If it's 1, each line will be numbered
+  frame=leftline,                    % adds a frame around the code
+  rulecolor=\color{black},           % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                         % sets default tabsize to 2 spaces
+  stringstyle=\color{mymauve},       % string literal style
+  captionpos=b,                      % sets the caption-position to bottom
+  breaklines=true,                   % sets automatic line breaking
+  breakatwhitespace=false,           % sets if automatic breaks should only happen at whitespace
+  keywordstyle=\color{blue},         % keyword style
+  commentstyle=\color{dkgreen},      % comment style
+  stringstyle=\color{dkred},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  %title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  morekeywords={in, vec3, vec4, *,...} % if you want to add more keywords to the set
+}
+\lstloadlanguages{Java}
+\DeclareCaptionFont{green}{\color{green}}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+
+\captionsetup[lstlisting]{format=listing, labelfont=white,
+                         textfont=white, singlelinecheck=false, margin=0pt,
+                         font={footnotesize}}

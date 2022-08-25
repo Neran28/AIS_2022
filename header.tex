@@ -1,0 +1,123 @@
+\rmfamily
+
+\newtotcounter{totalPoints}
+
+\newcommand{\Moodle}{\href{https://moodle2.uni-due.de/course/view.php?id=10062}{Moodle}\xspace}
+\newcommand{\hpcClass}{Advanced Image Synthesis\xspace}
+\newcommand{\hpcTerm}{Summer Term 2021\xspace}
+\newcommand{\hpcPeople}{\textbf{Andrea Iannella}\xspace}
+
+%\newcommand{\class}[1]{\texttt{#1}}
+
+% cover page header
+\newcommand{\hpcHeader}{
+\noindent
+\begin{minipage}[b][3.5cm]{0.39\textwidth}
+	\includegraphics[width=6cm]{../uni-due}\\
+	\vfill
+%	\hpcGerman{
+%	\s{Lösung}{} \hpcFake{Probeklausur}{Klausur} \hpcTerm\
+%	}{
+%	\s{Solution}{} \hpcFake{Preparatory Exam}{Final Exam} \hpcTerm\
+%	}
+	\hpcTerm
+	%\\ \hpcExamDate
+\end{minipage}
+\hfill
+\begin{minipage}[b][3.5cm]{0.59\textwidth}
+\begin{flushright}
+	\hpcGerman{
+	Informatik und Angewandte Kognitionswissenschaft\\
+	Lehrstuhl für Hochleistungsrechnen\\
+	}{
+	Computer Science and Applied Cognitive Science\\
+	High Performance Computing Group\\
+	}
+	\url{http://hpc.uni-due.de/teaching}\\
+	\vfill
+	\textbf{Prof. Dr. Jens Krüger}\\
+	\hpcPeople
+\end{flushright}
+\end{minipage}
+\\
+\vspace{-3.5mm}
+\hrule
+}
+
+\hpcHeader
+
+\let\origthesubsection\thesubsection
+\setcounter{section}{0}
+
+\vspace{0.5cm}
+
+\begin{center}
+	\LARGE
+	\textbf{\hpcClass}\\
+\end{center}
+
+\vspace{0.2cm}
+
+\ifhpcGerman % GERMAN STUFF
+
+\normalfont
+\begin{center}
+	\Large
+	{\textbf{\hpcSolution{Musterlösung für}{} Übungsblatt \hpcSheetNumber \ (\total{totalPoints} Punkte)}}
+\end{center}
+
+\vspace{0.2cm}
+
+\hpcSolution{
+\hrule height 0.07ex
+}{
+Alle Abgaben müssen in \Moodle bis \textbf{\hpcDeadline{}} hochgeladen werden, anderenfalls wird das Übungsblatt mit 0 Punkten bewertet. Abgaben, die nicht kompilierbar sind oder falsch benannte Dateien enthalten, bekommen ebenfalls 0 Punkte.
+Beispielhafte (Konsolen-)Ausgaben sind häufig Teil der Aufgabe. Stimmen Ihre Lösungen nicht mit den beispielhaften Ausgaben überein, erhalten Sie nur sehr wenige Punkte. Bitte fügen Sie keine weiteren, nicht in der Aufgabe geforderten Ausgaben hinzu.
+Packen Sie alle Dateien Ihrer Lösung in \textbf{eine}
+\href{http://de.wikipedia.org/wiki/ZIP-Dateiformat}{Zip-Datei}.
+Innerhalb dieser Zip-Datei dürfen keine Unterverzeichnisse angelegt werden. Der Dateiname muss wie folgt aussehen: \textbf{\texttt{u\hpcSheetNumber\_Vorname\_Nachname.zip}}.
+}
+
+\newcommand{\ex}[2]{
+\addtocounter{totalPoints}{#2}
+\section{#1 (#2 Punkte)}
+}
+
+\else % ENGLISH STUFF
+
+\normalfont
+\begin{center}
+	\Large
+	{\textbf{\hpcSolution{Sample Solution for}{} Assignment \hpcSheetNumber \ (\total{totalPoints} Points)}}
+\end{center}
+
+\vspace{0.2cm}
+
+\hpcSolution{
+\hrule height 0.07ex
+}{
+All assignments are to be uploaded to \Moodle on \textbf{\hpcDeadline{}}.
+Assignments that are not uploaded to Moodle before the deadline will
+not be graded (0 points). Assignments that do not compile also
+receive 0 points.
+Often example inputs and outputs are provided for you
+to test your programs; assignments that do not process these examples
+correctly will receive very few points.
+Please do not add any additional output to your program than what is
+requested.
+Submit your solution as a \textbf{single} \href{http://en.wikipedia.org/wiki/Zip_(file_format)}{zip-archive} named as follows: \textbf{\texttt{a\hpcSheetNumber\_FirstName\_LastName.zip}}.
+
+Include the entire project folder in the archive and for assignments also consisting of theoretical tasks include in addition a text file or a scan/photo with the corresponding answers.
+Please see assignment sheet 1 for details.
+}
+
+\newcommand{\ex}[2]{
+\addtocounter{totalPoints}{#2}
+\section{#1 (#2 Points)}
+}
+
+\fi
+
+\vspace{1em}
+%\hline
+\vspace{1em}
